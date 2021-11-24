@@ -246,10 +246,10 @@
                                     "selectAll": false,
                                     "filter": true,
                                     "multiLine": true,
-                                    "visible": true,
+                                    "visible": false,
                                     "toolTip": "Select Environment",
                                     "constraints": {
-                                        "allowedValues":  "[steps('lzNaming').esNamingParameters.esNamingEnvironments]"
+                                        "allowedValues":  []
                                     }
                                 },
                                 {
