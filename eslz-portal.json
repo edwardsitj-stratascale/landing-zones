@@ -382,7 +382,7 @@
                                     "label": "Example Selected Resource Abbreviation 'slug'",
                                     "visible": true,
                                     "options": {
-                                        "text": "[steps('lzNaming').esNameFormat.esNamingParameters.esNameResources]"
+                                        "text": "[steps('lzNaming').esNamingParameters.esNameResources]"
                                     }
                                 }
 							],
