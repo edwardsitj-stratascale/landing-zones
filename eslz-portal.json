@@ -416,7 +416,7 @@
                                     "label": "pip-sharepoint-prod-westus-001",
                                     "visible": true,
                                     "options": {
-										"text": "[if(equals(steps('lzNaming').esNameFormat, 'Microsoft CAF Standard'),concat(steps('lzNaming').esNamingExample.esNameResources,'-sharepoint-hub-',steps('basics').resourceScope.location.name,'-001'),if(equals(steps('lzNaming').esNameFormat, 'Most to least specific'),concat('sharepoint001-',steps('lzNaming').esNamingExample.esNameResources,'-hub-',steps('basics').resourceScope.location.name),if(equals(steps('lzNaming').esNameFormat, 'Least to most specific'),concat(steps('basics').resourceScope.location.name,'-prod-',steps('lzNaming').esNamingExample.esNameResources,'pip-sharepoint-001'),'')))]"
+										"text": "[concat('Output: ',if(equals(steps('lzNaming').esNameFormat, 'Microsoft CAF Standard'),concat(steps('lzNaming').esNamingExample.esNameResources,'-sharepoint-hub-',steps('basics').resourceScope.location.name,'-001'),if(equals(steps('lzNaming').esNameFormat, 'Most to least specific'),concat('sharepoint001-',steps('lzNaming').esNamingExample.esNameResources,'-hub-',steps('basics').resourceScope.location.name),if(equals(steps('lzNaming').esNameFormat, 'Least to most specific'),concat(steps('basics').resourceScope.location.name,'-prod-',steps('lzNaming').esNamingExample.esNameResources,'pip-sharepoint-001'),''))))]"
 									}
                                 }
 							],
