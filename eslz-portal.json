@@ -203,23 +203,6 @@
                             }
                         },
                         {
-							"name": "esNamingExampleSection",
-							"type": "Microsoft.Common.Section",
-							"label": "Example Resource Name",
-							"elements": [
-								{
-									"name": "esNameCAF",
-                                    "type": "Microsoft.Common.TextBlock",
-                                    "label": "pip-sharepoint-prod-westus-001",
-                                    "visible": true,
-                                    "options": {
-										"text": "[if(equals(steps('lzNaming').esNameFormat, 'Microsoft CAF Standard'),'pip-sharepoint-prod-westus-001',if(equals(steps('lzNaming').esNameFormat, 'Most to least specific'),'sharepoint001-pip-prod-westus',if(equals(steps('lzNaming').esNameFormat, 'Least to most specific'),'westus-prod-pip-sharepoint-001','')))]"
-									}
-                                }
-							],
-							"visible": true
-            			},
-                        {
 							"name": "esNamingParameters",
 							"type": "Microsoft.Common.Section",
 							"label": "Naming Parameters",
@@ -250,7 +233,7 @@
                                     "name": "esNameResources",
                                     "type": "Microsoft.Common.DropDown",
                                     "label": "Show All Resources",
-                                    "defaultValue": "aa",
+                                    "defaultValue": "Automation account",
                                     "multiselect": false,
                                     "selectAll": true,
                                     "filter": true,
@@ -392,6 +375,23 @@
                                             { "label": "Web Application Firewall (WAF) policy rule group", "description": "Networking", "value": "wafrg" }
                                         ]
                                     }
+                                }
+							],
+							"visible": true
+            			},
+                        {
+							"name": "esNamingExampleSection",
+							"type": "Microsoft.Common.Section",
+							"label": "Example Resource Name",
+							"elements": [
+								{
+									"name": "esNameCAF",
+                                    "type": "Microsoft.Common.TextBlock",
+                                    "label": "pip-sharepoint-prod-westus-001",
+                                    "visible": true,
+                                    "options": {
+										"text": "[if(equals(steps('lzNaming').esNameFormat, 'Microsoft CAF Standard'),steps('lzNaming').esNameFormat.esNamingParameters.esNameResources+'-sharepoint-prod-westus-001',if(equals(steps('lzNaming').esNameFormat, 'Most to least specific'),'sharepoint001-'+steps('lzNaming').esNameFormat.esNamingParameters.esNameResources+'-prod-westus',if(equals(steps('lzNaming').esNameFormat, 'Least to most specific'),'westus-prod-'+steps('lzNaming').esNameFormat.esNamingParameters.esNameResources+'-sharepoint-001','')))]"
+									}
                                 }
 							],
 							"visible": true
