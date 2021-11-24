@@ -166,39 +166,62 @@
                                 "validationMessage": "The prefix must be 1-10 characters."
                             }
                         },
-						{
+                        {
                             "name": "esNameFormat",
-                            "type": "Microsoft.Common.OptionsGroup",
-                            "label": "Naming Standard",
-                            "defaultValue": "Microsoft CAF Standard",
-                            "toolTip": "",
+                            "type": "Microsoft.Common.DropDown",
+                            "label": "Select Azure Firewall tier",
+                            "defaultValue": "Standard",
+                            "multiselect": false,
+                            "selectAll": false,
+                            "filter": false,
+                            "multiLine": true,
+                            "visible": "[equals(steps('esConnectivityGoalState').esAzFw, 'Yes')]",
+                            "toolTip": "Select Azure Firewall tier",
                             "constraints": {
                                 "allowedValues": [
                                     {
                                         "label": "Microsoft CAF Standard",
-                                        "subLabel": "pip-sharepoint-prod-westus-001",
-                                        "value": "resourceType-appName-environment-region-padding /n ex. pip-sharepoint-prod-westus-001"
+                                        "description": "resourceType-appName-environment-region-padding",
+                                        "value": "Microsoft CAF Standard"
                                     },
                                     {
                                         "label": "Most to least specific",
-                                        "subLabel": "sharepoint001-pip-prod-westus",
-                                        "value": "appName+Padding-resourceType-environment-region /n ex. sharepoint001-pip-prod-westus"
+                                        "description": "appName+Padding-resourceType-environment-region",
+                                        "value": "Most to least specific"
                                     },
                                     {
                                         "label": "Least to most specific",
-                                        "subLabel": "westus-prod-pip-sharepoint-001",
-                                        "value": "region-environment-resourceType-appName+Padding /n ex. westus-prod-pip-sharepoint-001"
+                                        "description": "region-environment-resourceType-appName+Padding",
+                                        "value": "Least to most specific"
                                     }
                                 ]
-                            },
-                            "visible": true
+                            }
                         },
                         {
-                            "name": "esNameExample",
+                            "name": "esNameCAF",
                             "type": "Microsoft.Common.TextBlock",
-                            "visible": true,
+                            "label": "Resource Name Example",
+                            "visible": "[equals(steps('lzNaming').esNameFormat,'Microsoft CAF Standard')]",
                             "options": {
-                                "text": "[steps('lzNaming').esNameFormat]"
+                                "text": "pip-sharepoint-prod-westus-001"
+                            }
+                        },
+                        {
+                            "name": "esNameMostLeast",
+                            "type": "Microsoft.Common.TextBlock",
+                            "label": "Resource Name Example",
+                            "visible": "[equals(steps('lzNaming').esNameFormat,'Most to least specific')]",
+                            "options": {
+                                "text": "sharepoint001-pip-prod-westus"
+                            }
+                        },
+                        {
+                            "name": "esNameLeastMost",
+                            "type": "Microsoft.Common.TextBlock",
+                            "label": "Resource Name Example",
+                            "visible": "[equals(steps('lzNaming').esNameFormat,'Least to most specific')]",
+                            "options": {
+                                "text": "westus-prod-pip-sharepoint-001"
                             }
                         }
                     ]
