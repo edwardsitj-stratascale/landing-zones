@@ -138,7 +138,7 @@
                                 "text": "Azure Landing Zones will apply the naming convention to all resources provided at this step.",
                                 "link": {
                                     "label": "Learn more",
-                                    "uri": "https://docs.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/management-group-and-subscription-organization"
+                                    "uri": "https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming"
                                 }
                             }
                         },
@@ -146,24 +146,24 @@
                             "name": "esNamePrefix",
                             "type": "Microsoft.Common.TextBox",
                             "label": "Custom Resource Prefix",
-                            "toolTip": "Provide a prefix for all resources created as part of Enterprise-scale.",
+                            "toolTip": "Provide a prefix for all resources created as part of Enterprise-scale. Must not contain a '-'",
                             "defaultValue": "",
                             "constraints": {
-                                "required": true,
-                                "regex": "^[a-z0-9A-Z-]{1,10}$",
-                                "validationMessage": "The prefix must be 1-10 characters."
+                                "required": false,
+                                "regex": "^[a-z0-9A-Z]{1,10}$",
+                                "validationMessage": "The prefix must be 1-10 characters and must not contain a '-'"
                             }
                         },
                         {
                             "name": "esNameSuffix",
                             "type": "Microsoft.Common.TextBox",
                             "label": "Custom Resource Suffix",
-                            "toolTip": "Provide a prefix (max 10 characters, unique at tenant-scope) for the Management Group hierarchy and other resources created as part of Enterprise-scale.",
+                            "toolTip": "Provide a suffix for all resources created as part of Enterprise-scale. Must not contain a '-'",
                             "defaultValue": "",
                             "constraints": {
-                                "required": true,
+                                "required": false,
                                 "regex": "^[a-z0-9A-Z-]{1,10}$",
-                                "validationMessage": "The prefix must be 1-10 characters."
+                                "validationMessage": "The suffix must be 1-10 characters and must not contain a '-'"
                             }
                         },
                         {
@@ -195,6 +195,14 @@
                                         "value": "Least to most specific"
                                     }
                                 ]
+                            }
+                        },
+                        {
+                            "name": "esNamingExample",
+                            "type": "Microsoft.Common.TextBlock",
+                            "visible": true,
+                            "options": {
+                                "text": "Example Resource Name"
                             }
                         },
                         {
