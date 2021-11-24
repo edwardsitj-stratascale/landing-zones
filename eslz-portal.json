@@ -169,20 +169,25 @@
 						{
                             "name": "esNameFormat",
                             "type": "Microsoft.Common.OptionsGroup",
-                            "label": "Deploy Log Analytics workspace and enable monitoring for your platform and resources",
+                            "label": "Naming Standard",
                             "defaultValue": "Microsoft CAF Standard",
                             "toolTip": "",
                             "constraints": {
                                 "allowedValues": [
                                     {
-                                        "label": "Microsoft CAF Standard [ resourceType-appName-environment-region-padding ]",
+                                        "label": "Microsoft CAF Standard",
                                         "description": "pip-sharepoint-prod-westus-001",
-                                        "value": "Microsoft CAF Standard"
+                                        "value": "resourceType-appName-environment-region-padding | ex. pip-sharepoint-prod-westus-001"
                                     },
                                     {
-                                        "label": "Most to least specific [ appName+Padding-resourceType-environment-region ] ",
+                                        "label": "Most to least specific",
                                         "description": "sharepoint001-pip-prod-westus",
-                                        "value": "Most to least specific"
+                                        "value": "appName+Padding-resourceType-environment-region | ex. sharepoint001-pip-prod-westus"
+                                    },
+                                    {
+                                        "label": "Least to most specific",
+                                        "description": "westus-prod-pip-sharepoint-001",
+                                        "value": "region-environment-resourceType-appName+Padding | ex. westus-prod-pip-sharepoint-001"
                                     }
                                 ]
                             },
@@ -193,11 +198,7 @@
                             "type": "Microsoft.Common.TextBlock",
                             "visible": true,
                             "options": {
-                                "text": "[steps('lzNaming').esNameFormat.description]",
-                                "link": {
-                                    "label": "Learn more",
-                                    "uri": "https://docs.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/management-group-and-subscription-organization"
-                                }
+                                "text": "[steps('lzNaming').esNameFormat]"
                             }
                         }
                     ]
