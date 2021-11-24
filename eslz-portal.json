@@ -170,7 +170,7 @@
                             "name": "esNameFormat",
                             "type": "Microsoft.Common.DropDown",
                             "label": "Select Naming Convention",
-                            "defaultValue": "Standard",
+                            "defaultValue": "Microsoft CAF Standard",
                             "multiselect": false,
                             "selectAll": false,
                             "filter": true,
@@ -210,17 +210,20 @@
 								{
 									"name": "esNameCAF",
                                     "type": "Microsoft.Common.TextBlock",
-                                    "label": "pip-sharepoint-prod-westus-001"
+                                    "label": "pip-sharepoint-prod-westus-001",
+                                    "visible": "[equals(steps('lzNaming').esNameFormat, 'Microsoft CAF Standard')]"
                                 },
                                 {
                                     "name": "esNameMostLeast",
                                     "type": "Microsoft.Common.TextBlock",
-                                    "label": "sharepoint001-pip-prod-westus"
+                                    "label": "sharepoint001-pip-prod-westus",
+                                    "visible": "[equals(steps('lzNaming').esNameFormat, 'Most to least specific')]"
                                 },
                                 {
                                     "name": "esNameLeastMost",
                                     "type": "Microsoft.Common.TextBlock",
-                                    "label": "westus-prod-pip-sharepoint-001"
+                                    "label": "westus-prod-pip-sharepoint-001",
+                                    "visible": "[equals(steps('lzNaming').esNameFormat, 'Least to most specific')]"
 								}
 							],
 							"visible": true
