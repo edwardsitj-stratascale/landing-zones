@@ -378,8 +378,7 @@
                                 }
 							],
 							"visible": true
-            			}
-                        /*
+            			},
                         {
 							"name": "esNamingExampleSection",
 							"type": "Microsoft.Common.Section",
@@ -397,7 +396,6 @@
 							],
 							"visible": true
             			}
-                        */
                     ]
                 },
                 {
