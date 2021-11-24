@@ -211,9 +211,9 @@
 									"name": "esNameCAF",
                                     "type": "Microsoft.Common.TextBlock",
                                     "label": "pip-sharepoint-prod-westus-001",
-                                    "visible": "[equals(steps('lzNaming').esNameFormat, 'Microsoft CAF Standard')]",
+                                    "visible": true,
                                     "options": {
-										"text": "pip-sharepoint-prod-westus-001"
+										"text": "[if(equals(steps('lzNaming').esNameFormat, 'Microsoft CAF Standard'),'pip-sharepoint-prod-westus-001',if(equals(steps('lzNaming').esNameFormat, 'Most to least specific'),'sharepoint001-pip-prod-westus',if(equals(steps('lzNaming').esNameFormat, 'Least to most specific'),'westus-prod-pip-sharepoint-001','')))]"
 									}
                                 },			
                                 {
