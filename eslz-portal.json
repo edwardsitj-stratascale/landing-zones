@@ -212,7 +212,7 @@
                                     "type": "Microsoft.Common.TextBox",
                                     "label": "List of environments separated by a comma.",
                                     "toolTip": "Provide environment names separated by a comma. (e.g prod,dev,hub,test,uat,blue,green)",
-                                    "defaultValue": "prod,dev,hub,test,uat,blue,green",
+                                    "defaultValue": "{ 'name': 'Hub' 'value': 'hub' },{ 'name': 'Production' 'value': 'prod' },{ 'name': 'Development' 'value': 'dev' },{ 'name': 'Quality Assurance' 'value': 'qa' }",
                                     "visible": true,
                                     "constraints": {
                                         "required": true
@@ -228,11 +228,45 @@
                                     "constraints": {
                                         "required": true
                                     }
+                                }
+							],
+							"visible": true
+            			},
+                        {
+							"name": "esNamingExampleSection",
+							"type": "Microsoft.Common.Section",
+							"label": "Example Resource Name",
+							"elements": [
+                                {
+                                    "name": "esNameEnvExample",
+                                    "type": "Microsoft.Common.DropDown",
+                                    "label": "Select Naming Convention",
+                                    "defaultValue": "Microsoft CAF Standard",
+                                    "multiselect": false,
+                                    "selectAll": false,
+                                    "filter": true,
+                                    "multiLine": true,
+                                    "visible": true,
+                                    "toolTip": "Select Environment Convention",
+                                    "constraints": {
+                                        "allowedValues": [ "[steps('lzNaming').esNamingExampleSection.esNameResources]" ]
+                                    }
+                                },
+                                {
+                                    "name": "esNameAppName",
+                                    "type": "Microsoft.Common.TextBox",
+                                    "label": "Example App Name",
+                                    "toolTip": "Provide environment names separated by a comma. (e.g prod,dev,hub,test,uat,blue,green)",
+                                    "defaultValue": "appName",
+                                    "visible": false,
+                                    "constraints": {
+                                        "required": false
+                                    }
                                 },
                                 {
                                     "name": "esNameResources",
                                     "type": "Microsoft.Common.DropDown",
-                                    "label": "Show All Resources",
+                                    "label": "Example Resource Name Selection",
                                     "defaultValue": "Automation account",
                                     "multiselect": false,
                                     "selectAll": true,
@@ -376,30 +410,13 @@
                                         ]
                                     }
                                 },
-                                {
-                                    "name": "esNameResourceSlug",
-                                    "type": "Microsoft.Common.TextBlock",
-                                    "label": "Example Selected Resource Abbreviation 'slug'",
-                                    "visible": true,
-                                    "options": {
-                                        "text": "[steps('lzNaming').esNamingParameters.esNameResources]"
-                                    }
-                                }
-							],
-							"visible": true
-            			},
-                        {
-							"name": "esNamingExampleSection",
-							"type": "Microsoft.Common.Section",
-							"label": "Example Resource Name",
-							"elements": [
 								{
 									"name": "esNameCAF",
                                     "type": "Microsoft.Common.TextBlock",
                                     "label": "pip-sharepoint-prod-westus-001",
                                     "visible": true,
                                     "options": {
-										"text": "[if(equals(steps('lzNaming').esNameFormat, 'Microsoft CAF Standard'),concat(steps('lzNaming').esNamingParameters.esNameResources,'-sharepoint-prod-westus-001'),if(equals(steps('lzNaming').esNameFormat, 'Most to least specific'),concat('sharepoint001-',steps('lzNaming').esNamingParameters.esNameResources,'-prod-westus'),if(equals(steps('lzNaming').esNameFormat, 'Least to most specific'),concat('westus-prod-',steps('lzNaming').esNamingParameters.esNameResources,'pip-sharepoint-001'),'')))]"
+										"text": "[if(equals(steps('lzNaming').esNameFormat, 'Microsoft CAF Standard'),concat(steps('lzNaming').esNamingExampleSection.esNameResources,'-sharepoint-hub-',steps('basics').resourceScope.location.name,'-001'),if(equals(steps('lzNaming').esNameFormat, 'Most to least specific'),concat('sharepoint001-',steps('lzNaming').esNamingExampleSection.esNameResources,'-hub-',steps('basics').resourceScope.location.name),if(equals(steps('lzNaming').esNameFormat, 'Least to most specific'),concat(steps('basics').resourceScope.location.name,'-prod-',steps('lzNaming').esNamingExampleSection.esNameResources,'pip-sharepoint-001'),'')))]"
 									}
                                 }
 							],
