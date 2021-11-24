@@ -211,19 +211,28 @@
 									"name": "esNameCAF",
                                     "type": "Microsoft.Common.TextBlock",
                                     "label": "pip-sharepoint-prod-westus-001",
-                                    "visible": "[equals(steps('lzNaming').esNameFormat, 'Microsoft CAF Standard')]"
-                                },
+                                    "visible": "[equals(steps('lzNaming').esNameFormat, 'Microsoft CAF Standard')]",
+                                    "options": {
+										"text": "pip-sharepoint-prod-westus-001"
+									}
+                                },			
                                 {
                                     "name": "esNameMostLeast",
                                     "type": "Microsoft.Common.TextBlock",
                                     "label": "sharepoint001-pip-prod-westus",
-                                    "visible": "[equals(steps('lzNaming').esNameFormat, 'Most to least specific')]"
+                                    "visible": "[equals(steps('lzNaming').esNameFormat, 'Most to least specific')]",
+                                    "options": {
+										"text": "sharepoint001-pip-prod-westus"
+									}
                                 },
                                 {
                                     "name": "esNameLeastMost",
                                     "type": "Microsoft.Common.TextBlock",
                                     "label": "westus-prod-pip-sharepoint-001",
-                                    "visible": "[equals(steps('lzNaming').esNameFormat, 'Least to most specific')]"
+                                    "visible": "[equals(steps('lzNaming').esNameFormat, 'Least to most specific')]",
+                                    "options": {
+										"text": "westus-prod-pip-sharepoint-001"
+									}
 								}
 							],
 							"visible": true
