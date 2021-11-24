@@ -249,7 +249,7 @@
                                     "visible": true,
                                     "toolTip": "Select Environment Convention",
                                     "constraints": {
-                                        "allowedValues": [ "[steps('lzNaming').esNamingExampleSection.esNameResources]" ]
+                                        "allowedValues": [ "[steps('lzNaming').esNamingParameters.esNamingEnvironments]" ]
                                     }
                                 },
                                 {
