@@ -220,7 +220,7 @@
 							"visible": true
             			},
                         {
-							"name": "esNamingExampleSection",
+							"name": "esNamingParameters",
 							"type": "Microsoft.Common.Section",
 							"label": "Naming Parameters",
 							"elements": [
