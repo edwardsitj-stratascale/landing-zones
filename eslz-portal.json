@@ -169,14 +169,14 @@
                         {
                             "name": "esNameFormat",
                             "type": "Microsoft.Common.DropDown",
-                            "label": "Select Azure Firewall tier",
+                            "label": "Select Naming Convention",
                             "defaultValue": "Standard",
                             "multiselect": false,
                             "selectAll": false,
-                            "filter": false,
+                            "filter": true,
                             "multiLine": true,
-                            "visible": "[equals(steps('esConnectivityGoalState').esAzFw, 'Yes')]",
-                            "toolTip": "Select Azure Firewall tier",
+                            "visible": true,
+                            "toolTip": "Select Naming Convention",
                             "constraints": {
                                 "allowedValues": [
                                     {
@@ -193,45 +193,38 @@
                                         "label": "Least to most specific",
                                         "description": "region-environment-resourceType-appName+Padding",
                                         "value": "Least to most specific"
+                                    },
+                                    {
+                                        "label": "Custom",
+                                        "description": "Select this option if you would like to name each resource individually",
+                                        "value": "Custom"
                                     }
                                 ]
                             }
                         },
                         {
-                            "name": "esNamingExample",
-                            "type": "Microsoft.Common.TextBlock",
-                            "visible": true,
-                            "options": {
-                                "text": "Example Resource Name"
-                            }
-                        },
-                        {
-                            "name": "esNameCAF",
-                            "type": "Microsoft.Common.TextBlock",
-                            "label": "Resource Name Example",
-                            "visible": "[equals(steps('lzNaming').esNameFormat,'Microsoft CAF Standard')]",
-                            "options": {
-                                "text": "pip-sharepoint-prod-westus-001"
-                            }
-                        },
-                        {
-                            "name": "esNameMostLeast",
-                            "type": "Microsoft.Common.TextBlock",
-                            "label": "Resource Name Example",
-                            "visible": "[equals(steps('lzNaming').esNameFormat,'Most to least specific')]",
-                            "options": {
-                                "text": "sharepoint001-pip-prod-westus"
-                            }
-                        },
-                        {
-                            "name": "esNameLeastMost",
-                            "type": "Microsoft.Common.TextBlock",
-                            "label": "Resource Name Example",
-                            "visible": "[equals(steps('lzNaming').esNameFormat,'Least to most specific')]",
-                            "options": {
-                                "text": "westus-prod-pip-sharepoint-001"
-                            }
-                        }
+							"name": "esNamingExampleSection",
+							"type": "Microsoft.Common.Section",
+							"label": "Example Resource Name",
+							"elements": [
+								{
+									"name": "esNameCAF",
+                                    "type": "Microsoft.Common.TextBlock",
+                                    "label": "pip-sharepoint-prod-westus-001"
+                                },
+                                {
+                                    "name": "esNameMostLeast",
+                                    "type": "Microsoft.Common.TextBlock",
+                                    "label": "sharepoint001-pip-prod-westus"
+                                },
+                                {
+                                    "name": "esNameLeastMost",
+                                    "type": "Microsoft.Common.TextBlock",
+                                    "label": "westus-prod-pip-sharepoint-001"
+								}
+							],
+							"visible": true
+            			}
                     ]
                 },
                 {
