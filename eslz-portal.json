@@ -212,7 +212,7 @@
                                     "type": "Microsoft.Common.TextBox",
                                     "label": "List of environments separated by a comma.",
                                     "toolTip": "Provide environment names separated by a comma. (e.g prod,dev,hub,test,uat,blue,green)",
-                                    "defaultValue": "{ 'label': 'Hub' 'value': 'hub' },{ 'label': 'Production' 'value': 'prod' },{ 'label': 'Development' 'value': 'dev' },{ 'label': 'Quality Assurance' 'value': 'qa' }",
+                                    "defaultValue": "{ 'label': 'Hub', 'value': 'hub' },{ 'label': 'Production', 'value': 'prod' },{ 'label': 'Development', 'value': 'dev' },{ 'label': 'Quality Assurance', 'value': 'qa' }",
                                     "visible": true,
                                     "constraints": {
                                         "required": true
