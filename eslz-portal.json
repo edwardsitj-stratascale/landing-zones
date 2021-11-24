@@ -176,18 +176,18 @@
                                 "allowedValues": [
                                     {
                                         "label": "Microsoft CAF Standard",
-                                        "description": "pip-sharepoint-prod-westus-001",
-                                        "value": "resourceType-appName-environment-region-padding | ex. pip-sharepoint-prod-westus-001"
+                                        "subLabel": "pip-sharepoint-prod-westus-001",
+                                        "value": "resourceType-appName-environment-region-padding /n ex. pip-sharepoint-prod-westus-001"
                                     },
                                     {
                                         "label": "Most to least specific",
-                                        "description": "sharepoint001-pip-prod-westus",
-                                        "value": "appName+Padding-resourceType-environment-region | ex. sharepoint001-pip-prod-westus"
+                                        "subLabel": "sharepoint001-pip-prod-westus",
+                                        "value": "appName+Padding-resourceType-environment-region /n ex. sharepoint001-pip-prod-westus"
                                     },
                                     {
                                         "label": "Least to most specific",
                                         "description": "westus-prod-pip-sharepoint-001",
-                                        "value": "region-environment-resourceType-appName+Padding | ex. westus-prod-pip-sharepoint-001"
+                                        "value": "region-environment-resourceType-appName+Padding /n ex. westus-prod-pip-sharepoint-001"
                                     }
                                 ]
                             },
