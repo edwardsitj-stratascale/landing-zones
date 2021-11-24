@@ -3,7 +3,7 @@
     "view": {
         "kind": "Form",
         "properties": {
-            "title": "Stratascale Landing Zone accelerator - Standard",
+            "title": "Stratascale Landing Zone Accelerator - Standard",
             "steps": [
                 {
                     "name": "basics",
@@ -109,6 +109,97 @@
 							],
 							"visible": "[equals(steps('lzSettings').subOrgsOption, 'Single')]"
             			}
+                    ]
+                },
+                {
+                    "name": "lzNaming",
+                    "label": "Azure Naming Convention",
+                    "subLabel": {
+                        "preValidation": "Provide a company naming standard for all resources.",
+                        "postValidation": "Done"
+                    },
+                    "bladeTitle": "Company prefix",
+                    "elements": [
+                        {
+                            "name": "info",
+                            "type": "Microsoft.Common.InfoBox",
+                            "visible": true,
+                            "options": {
+                                "text": "Azure Landing Zones ARM deployment requires access at the tenant root (/) scope. Visit this link to ensure you have the appropriate RBAC permission to complete the deployment",
+                                "uri": "https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin",
+                                "style": "Info"
+                            }
+                        },
+                        {
+                            "name": "esNamingInfo",
+                            "type": "Microsoft.Common.TextBlock",
+                            "visible": true,
+                            "options": {
+                                "text": "Azure Landing Zones will apply the naming convention to all resources provided at this step.",
+                                "link": {
+                                    "label": "Learn more",
+                                    "uri": "https://docs.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/management-group-and-subscription-organization"
+                                }
+                            }
+                        },
+                        {
+                            "name": "esNamePrefix",
+                            "type": "Microsoft.Common.TextBox",
+                            "label": "Custom Resource Prefix",
+                            "toolTip": "Provide a prefix for all resources created as part of Enterprise-scale.",
+                            "defaultValue": "",
+                            "constraints": {
+                                "required": true,
+                                "regex": "^[a-z0-9A-Z-]{1,10}$",
+                                "validationMessage": "The prefix must be 1-10 characters."
+                            }
+                        },
+                        {
+                            "name": "esNameSuffix",
+                            "type": "Microsoft.Common.TextBox",
+                            "label": "Custom Resource Suffix",
+                            "toolTip": "Provide a prefix (max 10 characters, unique at tenant-scope) for the Management Group hierarchy and other resources created as part of Enterprise-scale.",
+                            "defaultValue": "",
+                            "constraints": {
+                                "required": true,
+                                "regex": "^[a-z0-9A-Z-]{1,10}$",
+                                "validationMessage": "The prefix must be 1-10 characters."
+                            }
+                        },
+						{
+                            "name": "esNameFormat",
+                            "type": "Microsoft.Common.OptionsGroup",
+                            "label": "Deploy Log Analytics workspace and enable monitoring for your platform and resources",
+                            "defaultValue": "Microsoft CAF Standard",
+                            "toolTip": "",
+                            "constraints": {
+                                "allowedValues": [
+                                    {
+                                        "label": "Microsoft CAF Standard [ resourceType-appName-environment-region-padding ]",
+                                        "description": "pip-sharepoint-prod-westus-001",
+                                        "value": "Microsoft CAF Standard"
+                                    },
+                                    {
+                                        "label": "Most to least specific [ appName+Padding-resourceType-environment-region ] ",
+                                        "description": "sharepoint001-pip-prod-westus",
+                                        "value": "Most to least specific"
+                                    }
+                                ]
+                            },
+                            "visible": true
+                        },
+                        {
+                            "name": "esNameExample",
+                            "type": "Microsoft.Common.TextBlock",
+                            "visible": true,
+                            "options": {
+                                "text": "[steps('lzNaming').esNameFormat.description]",
+                                "link": {
+                                    "label": "Learn more",
+                                    "uri": "https://docs.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/management-group-and-subscription-organization"
+                                }
+                            }
+                        }
                     ]
                 },
                 {
@@ -609,7 +700,7 @@
                             "name": "esSecuritySolution",
                             "type": "Microsoft.Common.OptionsGroup",
                             "label": "Deploy Azure Sentinel",
-                            "defaultValue": "Yes (recommended)",
+                            "defaultValue": "No",
                             "toolTip": "If 'Yes' is selected when also adding a subscription for management, ARM will deploy resources and enable them for continous compliance",
                             "constraints": {
                                 "allowedValues": [
@@ -624,162 +715,6 @@
                                 ]
                             },
                             "visible": "[equals(steps('esGoalState').esLogAnalytics,'Yes')]"
-                        }
-                    ]
-                },
-                {
-                    "name": "lzDevOps",
-                    "label": "Platform DevOps and automation",
-                    "subLabel": {},
-                    "bladeTitle": "lz Dev Ops",
-                    "elements": [
-                        {
-                            "name": "info",
-                            "type": "Microsoft.Common.InfoBox",
-                            "visible": "[or(not(empty(steps('esGoalState').esMgmtSubSection.esMgmtSub)), not(empty(steps('lzSettings').esSingleSubSection.esSingleSub)))]",
-                            "options": {
-                                "text": "Azure Landing Zones provides an integrated CICD pipeline via AzOps that can be used with either GitHub Actions or Azure DevOps pipelines.",
-                                "uri": "https://github.com/azure/azops-accelerator/wiki/introduction",
-                                "style": "Info"
-                            }
-                        },
-                        {
-                            "name": "correction",
-                            "type": "Microsoft.Common.InfoBox",
-                            "visible": "[and(equals(steps('esGoalState').esLogAnalytics, 'No'), not(equals(steps('lzSettings').subOrgsOption, 'Single')))]",
-                            "options": {
-                                "text": "Azure Landing Zones provides an integrated CICD pipeline via AzOps that can be used with either GitHub Actions or Azure DevOps pipelines, but requires a dedicated subscription for platform management in the previous step. Please add a subscription or continue without setting up the CICD integration.",
-                                "uri": "https://github.com/azure/azops-accelerator/wiki/introduction",
-                                "style": "Warning"
-                            }
-                        },
-                        {
-                            "name": "cicdOption",
-                            "type": "Microsoft.Common.OptionsGroup",
-                            "label": "Deploy integrated CICD pipeline?",
-                            "defaultValue": "Yes (recommended)",
-                            "toolTip": "",
-                            "constraints": {
-                                "allowedValues": [
-                                    {
-                                        "label": "Yes (recommended)",
-                                        "value": "Yes"
-                                    },
-                                    {
-                                        "label": "No",
-                                        "value": "No"
-                                    }
-                                ],
-                                "required": true
-                            },
-                            "visible": "[or(not(empty(steps('esGoalState').esMgmtSubSection.esMgmtSub)), not(empty(steps('lzSettings').esSingleSubSection.esSingleSub)))]"
-                        },
-                        {
-                            "name": "Instructions",
-                            "type": "Microsoft.Common.TextBlock",
-                            "visible": "[equals(steps('lzDevOps').cicdOption,'Yes')]",
-                            "options": {
-                                "text": "Provide the credentials to initialize the repository with the ARM templates for Azure Landing Zones.",
-                                "link": {
-                                    "label": "Learn more",
-                                    "uri": "https://docs.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/management-group-and-subscription-organization"
-                                }
-                            }
-                        },
-                        {
-                            "name": "optionsGroup1",
-                            "type": "Microsoft.Common.OptionsGroup",
-                            "label": "Select CICD option",
-                            "defaultValue": "GitHub Actions",
-                            "toolTip": "Azure Landing Zones will provide options for both GitHub Actions and Azure DevOps pipelines. For now, only GitHub Actions is available",
-                            "constraints": {
-                                "allowedValues": [
-                                    {
-                                        "label": "GitHub Actions",
-                                        "value": "actions"
-                                    }
-                                ],
-                                "required": true
-                            },
-                            "visible": "[equals(steps('lzDevOps').cicdOption,'Yes')]"
-                        },
-                        {
-                            "name": "esGit",
-                            "type": "Microsoft.Common.TextBox",
-                            "label": "GitHub organization or username",
-                            "toolTip": "Provide Git org/username.",
-                            "visible": "[equals(steps('lzDevOps').cicdOption,'Yes')]",
-                            "defaultValue": "",
-                            "constraints": {
-                                "required": true,
-                                "regex": "^[a-z0-9A-Z-]{1,39}$",
-                                "validationMessage": "The GitHub org/username must be 1-39 characters."
-                            }
-                        },
-                        {
-                            "name": "esGitRepoName",
-                            "type": "Microsoft.Common.TextBox",
-                            "label": "New GitHub repository name",
-                            "toolTip": "Provide a name for the new repository that will be created",
-                            "defaultValue": "",
-                            "visible": "[equals(steps('lzDevOps').cicdOption,'Yes')]",
-                            "placeholder": "",
-                            "constraints": {
-                                "required": true,
-                                "regex": "^[a-z0-9A-Z-]{1,100}$",
-                                "validationMessage": "The repository name must be 1-100 characters."
-                            }
-                        },
-                        {
-                            "name": "esPaToken",
-                            "type": "Microsoft.Common.PasswordBox",
-                            "label": {
-                                "password": "GitHub personal access token",
-                                "confirmPassword": "Confirm PA Token"
-                            },
-                            "toolTip": "Provide the personal access token to access your GitHub account or organization. For more information see this link: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token",
-                            "constraints": {
-                                "required": true,
-                                "validationMessage": "Password must be at least 8 characters long, contain only numbers and letters"
-                            },
-                            "options": {
-                                "hideConfirmation": true
-                            },
-                            "visible": "[equals(steps('lzDevOps').cicdOption,'Yes')]"
-                        },
-                        {
-                            "name": "spnSection",
-                            "type": "Microsoft.Common.Section",
-                            "label": "",
-                            "elements": [
-                                {
-                                    "name": "esServicePrincipal",
-                                    "type": "Microsoft.Common.ServicePrincipalSelector",
-                                    "visible": "[equals(steps('lzDevOps').cicdOption,'Yes')]",
-                                    "label": {
-                                        "password": "Password",
-                                        "certificateThumbprint": "Certificate thumbprint",
-                                        "authenticationType": "Authentication Type",
-                                        "sectionHeader": "Service Principal"
-                                    },
-                                    "toolTip": {
-                                        "password": "Provide the application secret as it will be used to authenticate with Azure AD",
-                                        "certificateThumbprint": "Certificate thumbprint",
-                                        "authenticationType": "Authentication Type"
-                                    },
-                                    "defaultValue": {
-                                        "principalId": "",
-                                        "name": ""
-                                    },
-                                    "constraints": {
-                                        "required": true
-                                    },
-                                    "options": {
-                                        "hideCertificate": true
-                                    }
-                                }
-                            ],
-                            "visible": "[equals(steps('lzDevOps').cicdOption,'Yes')]"
                         }
                     ]
                 },
@@ -816,7 +751,7 @@
                             "name": "esHub",
                             "type": "Microsoft.Common.OptionsGroup",
                             "label": "Deploy networking topology",
-                            "defaultValue": "No",
+                            "defaultValue": "Hub and spoke with Azure Firewall",
                             "toolTip": "Select the preferred network topology. If third-party NVA is a requirement, you must deploy this into the connectivity subscription post the deployment.",
                             "constraints": {
                                 "allowedValues": [
