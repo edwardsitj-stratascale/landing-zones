@@ -240,16 +240,16 @@
                                 {
                                     "name": "esNameEnvExample",
                                     "type": "Microsoft.Common.DropDown",
-                                    "label": "Select Naming Convention",
-                                    "defaultValue": "Microsoft CAF Standard",
+                                    "label": "Select Environment",
+                                    "defaultValue": "hub",
                                     "multiselect": false,
                                     "selectAll": false,
                                     "filter": true,
                                     "multiLine": true,
                                     "visible": true,
-                                    "toolTip": "Select Environment Convention",
+                                    "toolTip": "Select Environment",
                                     "constraints": {
-                                        "allowedValues": [ "[steps('lzNaming').esNamingParameters.esNamingEnvironments]" ]
+                                        "allowedValues":  "[steps('lzNaming').esNamingParameters.esNamingEnvironments]"
                                     }
                                 },
                                 {
