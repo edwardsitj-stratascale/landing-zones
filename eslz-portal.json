@@ -186,7 +186,7 @@
                                     },
                                     {
                                         "label": "Least to most specific",
-                                        "description": "westus-prod-pip-sharepoint-001",
+                                        "subLabel": "westus-prod-pip-sharepoint-001",
                                         "value": "region-environment-resourceType-appName+Padding /n ex. westus-prod-pip-sharepoint-001"
                                     }
                                 ]
