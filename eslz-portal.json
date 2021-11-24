@@ -375,6 +375,15 @@
                                             { "label": "Web Application Firewall (WAF) policy rule group", "description": "Networking", "value": "wafrg" }
                                         ]
                                     }
+                                },
+                                {
+                                    "name": "esNameResourceSlug",
+                                    "type": "Microsoft.Common.TextBlock",
+                                    "label": "Example Selected Resource Abbreviation 'slug'",
+                                    "visible": true,
+                                    "options": {
+                                        "text": "[equals(steps('lzNaming').esNameFormat.esNamingParameters.esNameResources]"
+                                    }
                                 }
 							],
 							"visible": true
