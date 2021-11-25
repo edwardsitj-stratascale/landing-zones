@@ -223,7 +223,7 @@
                                         "columns": [
                                         {
                                             "id": "label",
-                                            "header": "Name",
+                                            "header": "Environment",
                                             "width": "1fr",
                                             "element": {
                                                 "type": "Microsoft.Common.TextBox",
