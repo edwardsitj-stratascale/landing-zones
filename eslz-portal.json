@@ -207,26 +207,237 @@
 							"type": "Microsoft.Common.Section",
 							"label": "Naming Parameters",
 							"elements": [
-								{
-                                    "name": "esNamingEnvironments",
-                                    "type": "Microsoft.Common.TextBox",
-                                    "label": "List of environments separated by a comma.",
-                                    "toolTip": "Provide environment names separated by a comma. (e.g prod,dev,hub,test,uat,blue,green)",
-                                    "defaultValue": "{ 'label': 'Hub', 'value': 'hub' },{ 'label': 'Production', 'value': 'prod' },{ 'label': 'Development', 'value': 'dev' },{ 'label': 'Quality Assurance', 'value': 'qa' }",
-                                    "visible": true,
+								{ 
+                                    "name": "esNamingEnvironment",
+                                    "type": "Microsoft.Common.EditableGrid",
+                                    "ariaLabel": "Enter the environments that you would like to use",
+                                    "label": "Environments",
                                     "constraints": {
-                                        "required": true
+                                        "width": "Full",
+                                        "rows": {
+                                        "count": {
+                                            "min": 0,
+                                            "max": 10
+                                        }
+                                        },
+                                        "columns": [
+                                        {
+                                            "id": "label",
+                                            "header": "Name",
+                                            "width": "1fr",
+                                            "element": {
+                                                "type": "Microsoft.Common.TextBox",
+                                                "placeholder": "Production",
+                                                "defaultValue": "Production",
+                                                "constraints": {
+                                                    "required": true
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "id": "value",
+                                            "header": "Abbreviation",
+                                            "width": "1fr",
+                                            "element": {
+                                                "type": "Microsoft.Common.TextBox",
+                                                "placeholder": "prod",
+                                                "defaultValue": "prod",
+                                                "constraints": {
+                                                    "required": true
+                                                }
+                                            }
+                                        }
+                                        ]
+                                    }
+                                },
+                                { 
+                                    "name": "esNamingBusinessUnits",
+                                    "type": "Microsoft.Common.EditableGrid",
+                                    "ariaLabel": "Enter the environments that you would like to use",
+                                    "label": "Environments",
+                                    "constraints": {
+                                        "width": "Full",
+                                        "rows": {
+                                            "count": {
+                                                "min": 0,
+                                                "max": 10
+                                            }
+                                        },
+                                        "columns": [
+                                            {
+                                                "id": "label",
+                                                "header": "Department",
+                                                "width": "1fr",
+                                                "element": {
+                                                    "type": "Microsoft.Common.TextBox",
+                                                    "placeholder": "Finance",
+                                                    "defaultValue": "Finance",
+                                                    "constraints": {
+                                                        "required": true
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "id": "value",
+                                                "header": "Abbreviation",
+                                                "width": "1fr",
+                                                "element": {
+                                                    "type": "Microsoft.Common.TextBox",
+                                                    "placeholder": "fin",
+                                                    "defaultValue": "fin",
+                                                    "constraints": {
+                                                        "required": true
+                                                    }
+                                                }
+                                            }
+                                        ]
                                     }
                                 },
                                 {
-                                    "name": "esNamingBusinessUnits",
-                                    "type": "Microsoft.Common.TextBox",
-                                    "label": "List of environments separated by a comma.",
-                                    "toolTip": "Provide environment names separated by a comma. (e.g prod,dev,hub,test,uat,blue,green)",
-                                    "defaultValue": "it,dev,fin,ops,corp,hr,anlyt,acctg,mktg",
-                                    "visible": true,
+                                    "name": "esResourceCAF",
+                                    "type": "Microsoft.Common.DropDown",
+                                    "label": "Example Resource Name Selection",
+                                    "defaultValue": "Automation account",
+                                    "multiselect": false,
+                                    "selectAll": true,
+                                    "filter": true,
+                                    "multiLine": true,
+                                    "visible": false,
+                                    "toolTip": "Select Naming Convention",
                                     "constraints": {
-                                        "required": true
+                                        "allowedValues": [
+                                            { "label": "Automation account", "description": "Management and Governance", "value": "aa" },
+                                            { "label": "Azure Data Factory", "description": "Analytics and IOT", "value": "adf" },
+                                            { "label": "Firewall", "description": "Networking", "value": "afw" },
+                                            { "label": "Firewall policy", "description": "Networking", "value": "afwp" },
+                                            { "label": "Azure Monitor action group", "description": "Management and Governance", "value": "ag" },
+                                            { "label": "Application gateway", "description": "Networking", "value": "agw" },
+                                            { "label": "AKS cluster", "description": "Containers", "value": "aks" },
+                                            { "label": "API management service instance", "description": "General", "value": "apim" },
+                                            { "label": "Web app", "description": "Compute and Web", "value": "app" },
+                                            { "label": "App Configuration store", "description": "Developer Tools", "value": "appcs" },
+                                            { "label": "Application Insights", "description": "Management and Governance", "value": "appi" },
+                                            { "label": "Azure Arc enabled Kubernetes cluster", "description": "Compute and Web", "value": "arck" },
+                                            { "label": "Azure Arc enabled server", "description": "Compute and Web", "value": "arcs" },
+                                            { "label": "Azure Analysis Services server", "description": "Analytics and IOT", "value": "as" },
+                                            { "label": "Azure Stream Analytics", "description": "Analytics and IOT", "value": "asa" },
+                                            { "label": "App Service environment", "description": "Compute and Web", "value": "ase" },
+                                            { "label": "Application security group (ASG)", "description": "Networking", "value": "asg" },
+                                            { "label": "Availability set", "description": "Compute and Web", "value": "avail" },
+                                            { "label": "Bastion", "description": "Networking", "value": "bas" },
+                                            { "label": "Blueprint", "description": "Management and Governance", "value": "bp" },
+                                            { "label": "Blueprint assignment", "description": "Management and Governance", "value": "bpa" },
+                                            { "label": "CDN endpoint", "description": "Networking", "value": "cdne" },
+                                            { "label": "CDN profile", "description": "Networking", "value": "cdnp" },
+                                            { "label": "Container instance", "description": "Containers", "value": "ci" },
+                                            { "label": "Cloud service", "description": "Compute and Web", "value": "cld" },
+                                            { "label": "Azure Cognitive Services", "description": "AI and Machine Learning", "value": "cog" },
+                                            { "label": "Connections", "description": "Networking", "value": "con" },
+                                            { "label": "Azure Cosmos DB database", "description": "Databases", "value": "cosmos" },
+                                            { "label": "Container registry", "description": "Containers", "value": "cr" },
+                                            { "label": "Azure Databricks workspace", "description": "Analytics and IOT", "value": "dbw" },
+                                            { "label": "Azure Data Explorer cluster", "description": "Analytics and IOT", "value": "dec" },
+                                            { "label": "Azure Data Explorer cluster database", "description": "Analytics and IOT", "value": "dedb" },
+                                            { "label": "Disk encryption set", "description": "Compute and Web", "value": "des" },
+                                            { "label": "Managed disk (data)", "description": "Compute and Web", "value": "disk" },
+                                            { "label": "Data Lake Analytics account", "description": "Analytics and IOT", "value": "dla" },
+                                            { "label": "Data Lake Store account", "description": "Storage", "value": "dls" },
+                                            { "label": "Database Migration Service instance", "description": "Migration", "value": "dms" },
+                                            { "label": "DNS", "description": "Networking", "value": "dnsz" },
+                                            { "label": "ExpressRoute circuit", "description": "Networking", "value": "erc" },
+                                            { "label": "Event Grid domain", "description": "Analytics and IOT", "value": "evgd" },
+                                            { "label": "Event Grid subscriptions", "description": "Analytics and IOT", "value": "evgs" },
+                                            { "label": "Event Grid topic", "description": "Analytics and IOT", "value": "evgt" },
+                                            { "label": "Event hub", "description": "Analytics and IOT", "value": "evh" },
+                                            { "label": "Event Hubs namespace", "description": "Analytics and IOT", "value": "evhns" },
+                                            { "label": "Front Door instance", "description": "Networking", "value": "fd" },
+                                            { "label": "Front Door firewall policy", "description": "Networking", "value": "fdfp" },
+                                            { "label": "Function app", "description": "Compute and Web", "value": "func" },
+                                            { "label": "Gallery", "description": "Compute and Web", "value": "gal" },
+                                            { "label": "HDInsight - Hadoop cluster", "description": "Analytics and IOT", "value": "hadoop" },
+                                            { "label": "HDInsight - HBase cluster", "description": "Analytics and IOT", "value": "hbase" },
+                                            { "label": "Integration account", "description": "Integration", "value": "ia" },
+                                            { "label": "Managed Identity", "description": "General", "value": "id" },
+                                            { "label": "IoT hub", "description": "Analytics and IOT", "value": "iot" },
+                                            { "label": "Public IP address prefix", "description": "Networking", "value": "ippre" },
+                                            { "label": "HDInsight - Kafka cluster", "description": "Analytics and IOT", "value": "kafka" },
+                                            { "label": "Key vault", "description": "Management and Governance", "value": "kv" },
+                                            { "label": "Load balancer (external)", "description": "Networking", "value": "lbe" },
+                                            { "label": "Load balancer (internal)", "description": "Networking", "value": "lbi" },
+                                            { "label": "Local network gateway", "description": "Networking", "value": "lgw" },
+                                            { "label": "Log Analytics workspace", "description": "Management and Governance", "value": "log" },
+                                            { "label": "Logic apps", "description": "Integration", "value": "logic" },
+                                            { "label": "Management group", "description": "General", "value": "mg" },
+                                            { "label": "Azure Migrate project", "description": "Migration", "value": "migr" },
+                                            { "label": "HDInsight - ML Services cluster", "description": "Analytics and IOT", "value": "mls" },
+                                            { "label": "Azure Machine Learning workspace", "description": "AI and Machine Learning", "value": "mlw" },
+                                            { "label": "MySQL database", "description": "Databases", "value": "mysql" },
+                                            { "label": "NAT gateway", "description": "Networking", "value": "ng" },
+                                            { "label": "Network interface (NIC)", "description": "Networking", "value": "nic" },
+                                            { "label": "Network security group (NSG)", "description": "Networking", "value": "nsg" },
+                                            { "label": "Network security group (NSG) security rules", "description": "Networking", "value": "nsgsr" },
+                                            { "label": "Notification Hubs", "description": "Compute and Web", "value": "ntf" },
+                                            { "label": "Notification Hubs namespace", "description": "Compute and Web", "value": "ntfns" },
+                                            { "label": "Network Watcher", "description": "Networking", "value": "nw" },
+                                            { "label": "Managed disk (OS)", "description": "Compute and Web", "value": "osdisk" },
+                                            { "label": "Power BI Embedded", "description": "Analytics and IOT", "value": "pbi" },
+                                            { "label": "Provisioning services certificate", "description": "Analytics and IOT", "value": "pcert" },
+                                            { "label": "DNS zone", "description": "Networking", "value": "pdnsz" },
+                                            { "label": "Virtual network peering", "description": "Networking", "value": "peer" },
+                                            { "label": "Public IP address", "description": "Networking", "value": "pip" },
+                                            { "label": "Private Link", "description": "Networking", "value": "pl" },
+                                            { "label": "App Service plan", "description": "Compute and Web", "value": "plan" },
+                                            { "label": "Policy definition", "description": "General", "value": "policy" },
+                                            { "label": "Provisioning services", "description": "Analytics and IOT", "value": "provs" },
+                                            { "label": "PostgreSQL database", "description": "Databases", "value": "psql" },
+                                            { "label": "Azure Purview instance", "description": "Management and Governance", "value": "pview" },
+                                            { "label": "Azure Cache for Redis instance", "description": "Databases", "value": "redis" },
+                                            { "label": "Route filter", "description": "Networking", "value": "rf" },
+                                            { "label": "Resource group", "description": "General", "value": "rg" },
+                                            { "label": "Recovery Services vault", "description": "Migration", "value": "rsv" },
+                                            { "label": "Route table", "description": "Networking", "value": "rt" },
+                                            { "label": "Load balancer rule", "description": "Networking", "value": "rule" },
+                                            { "label": "Service Bus", "description": "Integration", "value": "sb" },
+                                            { "label": "Service Bus queue", "description": "Integration", "value": "sbq" },
+                                            { "label": "Service Bus topic", "description": "Integration", "value": "sbt" },
+                                            { "label": "Service endpoint", "description": "Networking", "value": "se" },
+                                            { "label": "Service Fabric cluster", "description": "Containers", "value": "sf" },
+                                            { "label": "SignalR", "description": "Developer Tools", "value": "sigr" },
+                                            { "label": "Snapshot", "description": "Compute and Web", "value": "snap" },
+                                            { "label": "Virtual network subnet", "description": "Networking", "value": "snet" },
+                                            { "label": "HDInsight - Spark cluster", "description": "Analytics and IOT", "value": "spark" },
+                                            { "label": "Azure SQL Database server", "description": "Databases", "value": "sql" },
+                                            { "label": "Azure SQL database", "description": "Databases", "value": "sqldb" },
+                                            { "label": "Azure SQL Data Warehouse", "description": "Depreciated", "value": "sqldw" },
+                                            { "label": "SQL Managed Instance", "description": "Databases", "value": "sqlmi" },
+                                            { "label": "SQL Server Stretch Database", "description": "Databases", "value": "sqlstrdb" },
+                                            { "label": "Azure Cognitive Search", "description": "AI and Machine Learning", "value": "srch" },
+                                            { "label": "Azure StorSimple", "description": "Storage", "value": "ssimp" },
+                                            { "label": "Storage account", "description": "Storage", "value": "st" },
+                                            { "label": "Static web app", "description": "Compute and Web", "value": "stapp" },
+                                            { "label": "HDInsight - Storm cluster", "description": "Analytics and IOT", "value": "storm" },
+                                            { "label": "VM storage account", "description": "Storage", "value": "stvm" },
+                                            { "label": "Azure Synapse Analytics", "description": "Databases", "value": "syn" },
+                                            { "label": "Azure Synapse Analytics SQL Dedicated Pool", "description": "Databases", "value": "syndp" },
+                                            { "label": "Azure Synapse Analytics Spark Pool", "description": "Databases", "value": "synsp" },
+                                            { "label": "Azure Synapse Analytics Workspaces", "description": "Databases", "value": "synw" },
+                                            { "label": "Traffic Manager profile", "description": "Networking", "value": "traf" },
+                                            { "label": "Time Series Insights environment", "description": "Analytics and IOT", "value": "tsi" },
+                                            { "label": "User defined route (UDR)", "description": "Networking", "value": "udr" },
+                                            { "label": "VPN connection", "description": "Networking", "value": "vcn" },
+                                            { "label": "Virtual desktop application group", "description": "Azure Virtual Desktop", "value": "vdag" },
+                                            { "label": "Virtual desktop host pool", "description": "Azure Virtual Desktop", "value": "vdpool" },
+                                            { "label": "Virtual desktop workspace", "description": "Azure Virtual Desktop", "value": "vdws" },
+                                            { "label": "Virtual network gateway", "description": "Networking", "value": "vgw" },
+                                            { "label": "Virtual machine", "description": "Compute and Web", "value": "vm" },
+                                            { "label": "Virtual machine scale set", "description": "Compute and Web", "value": "vmss" },
+                                            { "label": "Virtual network", "description": "Networking", "value": "vnet" },
+                                            { "label": "VPN Gateway", "description": "Networking", "value": "vpng" },
+                                            { "label": "VPN site", "description": "Networking", "value": "vst" },
+                                            { "label": "Virtual WAN", "description": "Networking", "value": "vwan" },
+                                            { "label": "Web Application Firewall (WAF) policy", "description": "Networking", "value": "waf" },
+                                            { "label": "Web Application Firewall (WAF) policy rule group", "description": "Networking", "value": "wafrg" }
+                                        ]
                                     }
                                 }
 							],
@@ -246,16 +457,31 @@
                                     "selectAll": false,
                                     "filter": true,
                                     "multiLine": true,
-                                    "visible": false,
+                                    "visible": true,
                                     "toolTip": "Select Environment",
                                     "constraints": {
-                                        "allowedValues":  []
+                                        "allowedValues": "[steps('lzNaming').esNamingParameters.esNamingEnvironment]"
+                                    }
+                                },
+                                {
+                                    "name": "esNameBUExample",
+                                    "type": "Microsoft.Common.DropDown",
+                                    "label": "Select Business Unit",
+                                    "defaultValue": "hub",
+                                    "multiselect": false,
+                                    "selectAll": false,
+                                    "filter": true,
+                                    "multiLine": true,
+                                    "visible": true,
+                                    "toolTip": "Select Business Unit",
+                                    "constraints": {
+                                        "allowedValues": "[steps('lzNaming').esNamingParameters.esNamingBusinessUnits]"
                                     }
                                 },
                                 {
                                     "name": "esNameAppName",
                                     "type": "Microsoft.Common.TextBox",
-                                    "label": "Example App Name",
+                                    "label": "Enter Example App Name",
                                     "toolTip": "Provide an example app name",
                                     "defaultValue": "appName",
                                     "visible": true,
@@ -266,7 +492,7 @@
                                 {
                                     "name": "esNameResources",
                                     "type": "Microsoft.Common.DropDown",
-                                    "label": "Example Resource Name Selection",
+                                    "label": "Select Resource Type",
                                     "defaultValue": "Automation account",
                                     "multiselect": false,
                                     "selectAll": true,
@@ -410,18 +636,206 @@
                                         ]
                                     }
                                 },
-								{
-									"name": "esNameCAF",
-                                    "type": "Microsoft.Common.TextBlock",
-                                    "label": "pip-sharepoint-prod-westus-001",
+                                {
+                                    "name": "esNamePadding",
+                                    "type": "Microsoft.Common.TextBox",
+                                    "label": "Enter Padding if Desired",
+                                    "toolTip": "001 or 02",
+                                    "defaultValue": "01",
                                     "visible": true,
-                                    "options": {
-										"text": "[concat('Output:       ',if(equals(steps('lzNaming').esNameFormat, 'Microsoft CAF Standard'),concat(steps('lzNaming').esNamingExample.esNameResources,'-',steps('lzNaming').esNamingExample.esNameAppName,'-hub-',steps('basics').resourceScope.location.name,'-001'),if(equals(steps('lzNaming').esNameFormat, 'Most to least specific'),concat(steps('lzNaming').esNamingExample.esNameAppName,'001-',steps('lzNaming').esNamingExample.esNameResources,'-hub-',steps('basics').resourceScope.location.name),if(equals(steps('lzNaming').esNameFormat, 'Least to most specific'),concat(steps('basics').resourceScope.location.name,'-prod-',steps('lzNaming').esNamingExample.esNameResources,'pip-sharepoint-001'),''))))]"
-									}
-                                }
+                                    "constraints": {
+                                        "required": false
+                                    }
+                                },
+                                {
+                                    "name": "esRGUpper",
+                                    "type": "Microsoft.Common.OptionsGroup",
+                                    "label": "Resource Group Uppercase or Lowercase",
+                                    "defaultValue": "Lowercase",
+                                    "toolTip": "",
+                                    "constraints": {
+                                      "allowedValues": [
+                                        {
+                                          "label": "Uppercase",
+                                          "value": "true"
+                                        },
+                                        {
+                                          "label": "Lowercase",
+                                          "value": "false"
+                                        }
+                                      ],
+                                      "required": true
+                                    },
+                                    "visible": true
+                                  }
 							],
 							"visible": true
-            			}
+            			},
+                        {
+							"name": "esNameOutput",
+							"type": "Microsoft.Common.Section",
+							"label": "Example Output",
+							"elements": [
+                                {
+									"name": "esResourceGroupName",
+                                    "type": "Microsoft.Common.TextBlock",
+                                    "label": "Resource Group Name",
+                                    "visible": true,
+                                    "options": {
+										"text": "[if(equals(steps('lzNaming').esNameFormat, 'Microsoft CAF Standard'),concat('rg-',steps('lzNaming').esNamingExample.esNameAppName,'-',steps('lzNaming').esNamingExample.esNameEnvExample,'-',steps('basics').resourceScope.location.name),if(equals(steps('lzNaming').esNameFormat, 'Most to least specific'),concat(steps('lzNaming').esNamingExample.esNameAppName,'-rg-',steps('lzNaming').esNamingExample.esNameEnvExample,'-',steps('basics').resourceScope.location.name),if(equals(steps('lzNaming').esNameFormat, 'Least to most specific'),concat(steps('basics').resourceScope.location.name,'-',steps('lzNaming').esNamingExample.esNameEnvExample,'-rg-',steps('lzNaming').esNamingExample.esNameAppName),'')))]"
+									}
+                                },
+                                {
+									"name": "esNameCAF",
+                                    "type": "Microsoft.Common.TextBlock",
+                                    "label": "Example Resource Name",
+                                    "visible": true,
+                                    "options": {
+										"text": "[if(equals(steps('lzNaming').esNameFormat, 'Microsoft CAF Standard'),concat(steps('lzNaming').esNamingExample.esNameResources,'-',steps('lzNaming').esNamingExample.esNameAppName,'-',steps('lzNaming').esNamingExample.esNameEnvExample,'-',steps('basics').resourceScope.location.name,steps('lzNaming').esNamingExample.esNamePadding),if(equals(steps('lzNaming').esNameFormat, 'Most to least specific'),concat(steps('lzNaming').esNamingExample.esNameAppName,steps('lzNaming').esNamingExample.esNamePadding,'-',steps('lzNaming').esNamingExample.esNameResources,'-',steps('lzNaming').esNamingExample.esNameEnvExample,'-',steps('basics').resourceScope.location.name),if(equals(steps('lzNaming').esNameFormat, 'Least to most specific'),concat(steps('basics').resourceScope.location.name,'-',steps('lzNaming').esNamingExample.esNameEnvExample,'-',steps('lzNaming').esNamingExample.esNameResources,'-',steps('lzNaming').esNamingExample.esNameAppName,steps('lzNaming').esNamingExample.esNamePadding),'')))]"
+									}
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "tags",
+                    "label": "Tags",
+                    "elements": [
+                        {
+                            "name": "tagsByResource",
+                            "type": "Microsoft.Common.TagsByResource",
+                            "resources": [
+                                "Microsoft.Network/privateLinkServices",
+                                "Microsoft.AnalysisServices/servers",
+                                "Microsoft.ApiManagement/service",
+                                "Microsoft.AppConfiguration/configurationStores",
+                                "Microsoft.Authorization/policyDefinitions",
+                                "Microsoft.Automation/automationAccounts",
+                                "Microsoft.Blueprint/blueprints",
+                                "Microsoft.Blueprint/blueprints/artifacts",
+                                "Microsoft.Cache/Redis",
+                                "Microsoft.Cdn/profiles",
+                                "Microsoft.Cdn/profiles/endpoints",
+                                "Microsoft.CognitiveServices/accounts",
+                                "Microsoft.Compute/availabilitySets",
+                                "Microsoft.Compute/cloudServices",
+                                "Microsoft.Compute/diskEncryptionSets",
+                                "Microsoft.Compute/disks",
+                                "Microsoft.Compute/disks",
+                                "Microsoft.Compute/galleries",
+                                "Microsoft.Compute/snapshots",
+                                "Microsoft.Compute/virtualMachines",
+                                "Microsoft.Compute/virtualMachineScaleSets",
+                                "Microsoft.ContainerInstance/containerGroups",
+                                "Microsoft.ContainerRegistry/registries",
+                                "Microsoft.ContainerService/managedClusters",
+                                "Microsoft.Databricks/workspaces",
+                                "Microsoft.DataFactory/factories",
+                                "Microsoft.DataLakeAnalytics/accounts",
+                                "Microsoft.DataLakeStore/accounts",
+                                "Microsoft.DataMigration/services",
+                                "Microsoft.DBforMySQL/servers",
+                                "Microsoft.DBforPostgreSQL/servers",
+                                "Microsoft.Devices/IotHubs",
+                                "Microsoft.Devices/provisioningServices",
+                                "Microsoft.Devices/provisioningServices/certificates",
+                                "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+                                "Microsoft.EventGrid/domains",
+                                "Microsoft.EventGrid/domains/topics",
+                                "Microsoft.EventGrid/eventSubscriptions",
+                                "Microsoft.EventHub/namespaces",
+                                "Microsoft.EventHub/namespaces/eventHubs",
+                                "Microsoft.HDInsight/clusters",
+                                "Microsoft.HDInsight/clusters",
+                                "Microsoft.HDInsight/clusters",
+                                "Microsoft.HDInsight/clusters",
+                                "Microsoft.HDInsight/clusters",
+                                "Microsoft.HDInsight/clusters",
+                                "Microsoft.HybridCompute/machines",
+                                "Microsoft.Insights/actionGroups",
+                                "Microsoft.Insights/components",
+                                "Microsoft.KeyVault/vaults",
+                                "Microsoft.Kubernetes/connectedClusters",
+                                "Microsoft.Kusto/clusters",
+                                "Microsoft.Kusto/clusters/databases",
+                                "Microsoft.Logic/integrationAccounts",
+                                "Microsoft.Logic/workflows",
+                                "Microsoft.MachineLearningServices/workspaces",
+                                "Microsoft.ManagedIdentity/userAssignedIdentities",
+                                "Microsoft.Management/managementGroups",
+                                "Microsoft.Migrate/assessmentProjects",
+                                "Microsoft.Network/applicationGateways",
+                                "Microsoft.Network/applicationSecurityGroups",
+                                "Microsoft.Network/azureFirewalls",
+                                "Microsoft.Network/bastionHosts",
+                                "Microsoft.Network/connections",
+                                "Microsoft.Network/dnsZones",
+                                "Microsoft.Network/expressRouteCircuits",
+                                "Microsoft.Network/firewallPolicies",
+                                "Microsoft.Network/firewallPolicies",
+                                "Microsoft.Network/firewallPolicies/ruleGroups",
+                                "Microsoft.Network/frontDoors",
+                                "Microsoft.Network/frontdoorWebApplicationFirewallPolicies",
+                                "Microsoft.Network/loadBalancers",
+                                "Microsoft.Network/loadBalancers",
+                                "Microsoft.Network/loadBalancers/inboundNatRules",
+                                "Microsoft.Network/localNetworkGateways",
+                                "Microsoft.Network/natGateways",
+                                "Microsoft.Network/networkInterfaces",
+                                "Microsoft.Network/networkSecurityGroups",
+                                "Microsoft.Network/networkSecurityGroups/securityRules",
+                                "Microsoft.Network/networkWatchers",
+                                "Microsoft.Network/privateDnsZones",
+                                "Microsoft.Network/publicIPAddresses",
+                                "Microsoft.Network/publicIPPrefixes",
+                                "Microsoft.Network/routeFilters",
+                                "Microsoft.Network/routeTables",
+                                "Microsoft.Network/routeTables/routes",
+                                "Microsoft.Network/trafficManagerProfiles",
+                                "Microsoft.Network/virtualNetworkGateways",
+                                "Microsoft.Network/virtualNetworks",
+                                "Microsoft.Network/virtualNetworks/subnets",
+                                "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+                                "Microsoft.Network/virtualWans",
+                                "Microsoft.Network/vpnGateways",
+                                "Microsoft.Network/vpnGateways/vpnConnections",
+                                "Microsoft.Network/vpnGateways/vpnSites",
+                                "Microsoft.NotificationHubs/namespaces",
+                                "Microsoft.NotificationHubs/namespaces/notificationHubs",
+                                "Microsoft.OperationalInsights/workspaces",
+                                "Microsoft.PowerBIDedicated/capacities",
+                                "Microsoft.Purview/accounts",
+                                "Microsoft.RecoveryServices/vaults",
+                                "Microsoft.Resources/resourceGroups",
+                                "Microsoft.Search/searchServices",
+                                "Microsoft.ServiceBus/namespaces",
+                                "Microsoft.ServiceBus/namespaces/queues",
+                                "Microsoft.ServiceBus/namespaces/topics",
+                                "Microsoft.serviceEndPointPolicies",
+                                "Microsoft.ServiceFabric/clusters",
+                                "Microsoft.SignalRService/SignalR",
+                                "Microsoft.Sql/managedInstances",
+                                "Microsoft.Sql/servers",
+                                "Microsoft.Sql/servers",
+                                "Microsoft.Sql/servers/databases",
+                                "Microsoft.Sql/servers/databases",
+                                "Microsoft.Storage/storageAccounts",
+                                "Microsoft.Storage/storageAccounts",
+                                "Microsoft.StorSimple/managers",
+                                "Microsoft.StreamAnalytics/cluster",
+                                "Microsoft.Synapse/workspaces",
+                                "Microsoft.Synapse/workspaces",
+                                "Microsoft.Synapse/workspaces/sqlPools",
+                                "Microsoft.Synapse/workspaces/sqlPools",
+                                "Microsoft.TimeSeriesInsights/environments",
+                                "Microsoft.Web/serverFarms",
+                                "Microsoft.Web/sites",
+                                "Microsoft.Web/sites",
+                                "Microsoft.Web/sites",
+                                "Microsoft.Web/staticSites"
+                            ]
+                        }
                     ]
                 },
                 {
