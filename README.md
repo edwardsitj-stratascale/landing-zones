@@ -1,85 +1,127 @@
-# terraform-azurerm-app-lz
-
-## Introduction
-
-This terraform module will create the appropriate virutal network and subnets specified via input parameters. 
-
-This will configure all of the logging and monitoring needed for those resources.
-
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 3.23 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | = 3.23.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.24.0 |
-| <a name="provider_azurerm.hub"></a> [azurerm.hub](#provider\_azurerm.hub) | 3.24.0 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.23.0 |
+| <a name="provider_azurerm.hub"></a> [azurerm.hub](#provider\_azurerm.hub) | 3.23.0 |
+| <a name="provider_azurerm.sponsor"></a> [azurerm.sponsor](#provider\_azurerm.sponsor) | 3.23.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.4.3 |
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_name"></a> [name](#module\_name) | Azure/naming/azurerm | n/a |
+No modules.
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [azurerm_monitor_diagnostic_setting.nsg](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/monitor_diagnostic_setting) | resource |
-| [azurerm_monitor_diagnostic_setting.vnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/monitor_diagnostic_setting) | resource |
-| [azurerm_network_security_group.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_group) | resource |
-| [azurerm_resource_group.ssvc](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) | resource |
-| [azurerm_resource_group.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) | resource |
-| [azurerm_route_table.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/route_table) | resource |
-| [azurerm_subnet_route_table_association.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet_route_table_association) | resource |
-| [azurerm_virtual_network.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network) | resource |
-| [azurerm_virtual_network_peering.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network_peering) | resource |
-| [azurerm_log_analytics_workspace.hub](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/log_analytics_workspace) | data source |
-| [azurerm_monitor_diagnostic_categories.nsg](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/monitor_diagnostic_categories) | data source |
-| [azurerm_monitor_diagnostic_categories.vnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/monitor_diagnostic_categories) | data source |
-| [azurerm_subnet.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/subnet) | data source |
-| [azurerm_virtual_network.hub](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/virtual_network) | data source |
+| [azurerm_data_factory_integration_runtime_azure.data_factory_managed_integration_runtime](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/data_factory_integration_runtime_azure) | resource |
+| [azurerm_key_vault_access_policy.key_vault_access_policy_adf](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/key_vault_access_policy) | resource |
+| [azurerm_key_vault_access_policy.key_vault_access_policy_managed_identity](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/key_vault_access_policy) | resource |
+| [azurerm_key_vault_access_policy.key_vault_access_policy_postgresql](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/key_vault_access_policy) | resource |
+| [azurerm_key_vault_key.key_vault_key_data_factory](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/key_vault_key) | resource |
+| [azurerm_key_vault_key.key_vault_key_postgresql](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/key_vault_key) | resource |
+| [azurerm_key_vault_key.key_vault_key_storage_account](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/key_vault_key) | resource |
+| [azurerm_key_vault_secret.key_vault_secret_accounting_password](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/key_vault_secret) | resource |
+| [azurerm_key_vault_secret.key_vault_secret_adf_password](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/key_vault_secret) | resource |
+| [azurerm_key_vault_secret.key_vault_secret_file_share_password](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/key_vault_secret) | resource |
+| [azurerm_key_vault_secret.key_vault_secret_postgresql_password](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/key_vault_secret) | resource |
+| [azurerm_key_vault_secret.key_vault_secret_psql_adf_orca](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/key_vault_secret) | resource |
+| [azurerm_key_vault_secret.key_vault_secret_psql_devops_orca](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/key_vault_secret) | resource |
+| [azurerm_key_vault_secret.key_vault_secret_psql_spotfire_activation_enrollment](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/key_vault_secret) | resource |
+| [azurerm_key_vault_secret.key_vault_secret_psql_spotfire_clin_ops_reports](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/key_vault_secret) | resource |
+| [azurerm_key_vault_secret.key_vault_secret_rws_api_password](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/key_vault_secret) | resource |
+| [azurerm_key_vault_secret.key_vault_secret_smdb_password](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/key_vault_secret) | resource |
+| [azurerm_key_vault_secret.key_vault_secret_spotfire_password](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/key_vault_secret) | resource |
+| [azurerm_key_vault_secret.key_vault_secret_spotfire_password_2](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/key_vault_secret) | resource |
+| [azurerm_key_vault_secret.key_vault_secret_stafftrack_password](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/key_vault_secret) | resource |
+| [azurerm_monitor_action_group.action_group](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/monitor_action_group) | resource |
+| [azurerm_monitor_diagnostic_setting.data_factory_diagnostic](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/monitor_diagnostic_setting) | resource |
+| [azurerm_monitor_diagnostic_setting.postgresql_diagnostic](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/monitor_diagnostic_setting) | resource |
+| [azurerm_monitor_metric_alert.data_factory_metric_alert](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/monitor_metric_alert) | resource |
+| [azurerm_postgresql_server.postgresql](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/postgresql_server) | resource |
+| [azurerm_postgresql_server_key.postgresql_encryption](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/postgresql_server_key) | resource |
+| [azurerm_private_endpoint.private_endpoint_data_factory](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/private_endpoint) | resource |
+| [azurerm_private_endpoint.private_endpoint_postgresql](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/private_endpoint) | resource |
+| [azurerm_resource_group_template_deployment.data_factory](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/resource_group_template_deployment) | resource |
+| [azurerm_role_assignment.data_factory_role_assignment_integration_runtime_self_hosted](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/role_assignment) | resource |
+| [azurerm_user_assigned_identity.managed_identity](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/resources/user_assigned_identity) | resource |
+| [random_password.random_adf_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
+| [random_password.random_postgresql_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
+| [random_password.random_psql_adf_orca_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
+| [random_password.random_psql_devops_orca_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
+| [random_password.random_psql_spotfire_activation_enrollment_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
+| [random_password.random_psql_spotfire_clin_ops_reports_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
+| [random_password.random_spotfire_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
+| [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/data-sources/client_config) | data source |
+| [azurerm_data_factory.this](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/data-sources/data_factory) | data source |
+| [azurerm_key_vault.key_vault](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/data-sources/key_vault) | data source |
+| [azurerm_log_analytics_workspace.hub](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/data-sources/log_analytics_workspace) | data source |
+| [azurerm_monitor_diagnostic_categories.data_factory](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/data-sources/monitor_diagnostic_categories) | data source |
+| [azurerm_monitor_diagnostic_categories.postgresql](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/data-sources/monitor_diagnostic_categories) | data source |
+| [azurerm_private_dns_zone.private_dns_data_factory](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/data-sources/private_dns_zone) | data source |
+| [azurerm_private_dns_zone.private_dns_key_vault](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/data-sources/private_dns_zone) | data source |
+| [azurerm_private_dns_zone.private_dns_postgresql](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/data-sources/private_dns_zone) | data source |
+| [azurerm_private_dns_zone.private_dns_storage_account](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/data-sources/private_dns_zone) | data source |
+| [azurerm_storage_account.storage_account](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/data-sources/storage_account) | data source |
+| [azurerm_subnet.subnet_sponsor](https://registry.terraform.io/providers/hashicorp/azurerm/3.23.0/docs/data-sources/subnet) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_context"></a> [context](#input\_context) | The context of the resources.<br> Approved values include bizops, hub, sbx | `string` | `"sbx"` | no |
-| <a name="input_environment"></a> [environment](#input\_environment) | The environment that the resources will be deployed in.<br> Approved values include dev, stg, prd | `string` | `""` | no |
-| <a name="input_log_analytics_hub"></a> [log\_analytics\_hub](#input\_log\_analytics\_hub) | The central log analytics workpace name and resource group | `map(string)` | <pre>{<br>  "name": "law-us-hub-east2",<br>  "resource_group_name": "rg-us-mgsrvc-hub-east2"<br>}</pre> | no |
-| <a name="input_region"></a> [region](#input\_region) | Region and region abbreviation (slug) | `map(string)` | <pre>{<br>  "name": "eastus2",<br>  "slug": "use2"<br>}</pre> | no |
-| <a name="input_routes"></a> [routes](#input\_routes) | List of routes to be added to the evironment/context | `list(map(string))` | <pre>[<br>  {<br>    "address_prefix": "0.0.0.0/0",<br>    "name": "default",<br>    "next_hop_in_ip_address": "10.24.0.68",<br>    "next_hop_type": "VirtualAppliance"<br>  },<br>  {<br>    "address_prefix": "10.11.0.0/16",<br>    "name": "10-11-0-0-16-via-afw",<br>    "next_hop_in_ip_address": "10.24.0.68",<br>    "next_hop_type": "VirtualAppliance"<br>  },<br>  {<br>    "address_prefix": "10.2.0.0/16",<br>    "name": "10-2-0-0-16-via-afw",<br>    "next_hop_in_ip_address": "10.24.0.68",<br>    "next_hop_type": "VirtualAppliance"<br>  },<br>  {<br>    "address_prefix": "10.3.0.0/16",<br>    "name": "10-3-0-0-16-via-afw",<br>    "next_hop_in_ip_address": "10.24.0.68",<br>    "next_hop_type": "VirtualAppliance"<br>  },<br>  {<br>    "address_prefix": "172.16.17.0/24",<br>    "name": "vpn-172-16-17-0-24",<br>    "next_hop_in_ip_address": "10.24.0.68",<br>    "next_hop_type": "VirtualAppliance"<br>  }<br>]</pre> | no |
-| <a name="input_subscription_app_id"></a> [subscription\_app\_id](#input\_subscription\_app\_id) | Subscription ID that you would like to deploy to | `string` | `"dbc1ee45-e4cf-4d5a-bf44-e975f4f2e7a5"` | no |
-| <a name="input_subscription_hub_id"></a> [subscription\_hub\_id](#input\_subscription\_hub\_id) | The hub subscription ID | `string` | `"dbc1ee45-e4cf-4d5a-bf44-e975f4f2e7a5"` | no |
-| <a name="input_tag_business_criticality"></a> [tag\_business\_criticality](#input\_tag\_business\_criticality) | TAG: BusinessCriticality | `string` | `"Low"` | no |
-| <a name="input_tag_business_unit"></a> [tag\_business\_unit](#input\_tag\_business\_unit) | TAG: BusinessUnit | `string` | `"IT Operations"` | no |
-| <a name="input_tag_cost_center"></a> [tag\_cost\_center](#input\_tag\_cost\_center) | TAG: CostCenter | `string` | `"IT-Ops"` | no |
-| <a name="input_tag_data_class"></a> [tag\_data\_class](#input\_tag\_data\_class) | TAG: DataClass | `string` | `"General"` | no |
-| <a name="input_tag_ops_team"></a> [tag\_ops\_team](#input\_tag\_ops\_team) | TAG: OpsTeam | `string` | `"Cloud Operations"` | no |
-| <a name="input_tag_owner"></a> [tag\_owner](#input\_tag\_owner) | TAG: Owner | `string` | `"it-ops@rhoworld.com"` | no |
-| <a name="input_vnet_dns_servers"></a> [vnet\_dns\_servers](#input\_vnet\_dns\_servers) | The DNS servers to be used with vNet. | `list(string)` | <pre>[<br>  "10.24.0.68"<br>]</pre> | no |
-| <a name="input_vnet_hub"></a> [vnet\_hub](#input\_vnet\_hub) | The hub VNET for getting peering information | `map(string)` | <pre>{<br>  "name": "VNET-HUB-EASTUS2",<br>  "resource_group_name": "RG-NET-HUB-EastUS2"<br>}</pre> | no |
-| <a name="input_vnets"></a> [vnets](#input\_vnets) | This variable object is the heart of the module. This always must be defined. | <pre>map(object({<br>    address_prefixes = string<br>    peer_to_hub      = bool<br>    subnets          = list(map(string))<br>  }))</pre> | <pre>{<br>  "dev": {<br>    "address_prefixes": "10.24.64.0/23",<br>    "peer_to_hub": false,<br>    "subnets": [<br>      {<br>        "cidr": "10.24.64.0/24",<br>        "name": "data"<br>      }<br>    ]<br>  },<br>  "prd": {<br>    "address_prefixes": "10.23.68.0/23",<br>    "peer_to_hub": false,<br>    "subnets": [<br>      {<br>        "cidr": "10.23.68.0/24",<br>        "name": "data"<br>      }<br>    ]<br>  },<br>  "stg": {<br>    "address_prefixes": "10.23.66.0/23",<br>    "peer_to_hub": false,<br>    "subnets": [<br>      {<br>        "cidr": "10.23.66.0/24",<br>        "name": "data"<br>      }<br>    ]<br>  }<br>}</pre> | no |
+| <a name="input_PostgreSQL_Username"></a> [PostgreSQL\_Username](#input\_PostgreSQL\_Username) | n/a | `string` | `"dmadminuser"` | no |
+| <a name="input_account"></a> [account](#input\_account) | The ADF Account Project | `string` | `""` | no |
+| <a name="input_adf_name"></a> [adf\_name](#input\_adf\_name) | n/a | `string` | `""` | no |
+| <a name="input_adls_name"></a> [adls\_name](#input\_adls\_name) | n/a | `string` | `""` | no |
+| <a name="input_ag_name"></a> [ag\_name](#input\_ag\_name) | n/a | `string` | `""` | no |
+| <a name="input_alertsemail"></a> [alertsemail](#input\_alertsemail) | The email to receive alerts | `string` | `""` | no |
+| <a name="input_branch"></a> [branch](#input\_branch) | The ADF branch name | `string` | `""` | no |
+| <a name="input_branch_network"></a> [branch\_network](#input\_branch\_network) | n/a | `string` | `""` | no |
+| <a name="input_branch_no_network"></a> [branch\_no\_network](#input\_branch\_no\_network) | n/a | `string` | `""` | no |
+| <a name="input_branch_no_network_without_dash"></a> [branch\_no\_network\_without\_dash](#input\_branch\_no\_network\_without\_dash) | n/a | `string` | `""` | no |
+| <a name="input_environment"></a> [environment](#input\_environment) | The Environment name, i.e dev, staging, qa, preprod, test, prod... | `string` | `""` | no |
+| <a name="input_global_env"></a> [global\_env](#input\_global\_env) | n/a | `string` | `""` | no |
+| <a name="input_kv_name"></a> [kv\_name](#input\_kv\_name) | n/a | `string` | `""` | no |
+| <a name="input_location"></a> [location](#input\_location) | The Location to be deployed | `string` | `""` | no |
+| <a name="input_mi_name"></a> [mi\_name](#input\_mi\_name) | n/a | `string` | `""` | no |
+| <a name="input_pip-version"></a> [pip-version](#input\_pip-version) | The version of execution | `string` | `""` | no |
+| <a name="input_project"></a> [project](#input\_project) | The ADF Project | `string` | `""` | no |
+| <a name="input_psql_name"></a> [psql\_name](#input\_psql\_name) | n/a | `string` | `""` | no |
+| <a name="input_repository"></a> [repository](#input\_repository) | The ADF Repository | `string` | `""` | no |
+| <a name="input_resource_group_NET"></a> [resource\_group\_NET](#input\_resource\_group\_NET) | The Resource Group name to be deployed | `string` | `""` | no |
+| <a name="input_resource_group_NET_bizops"></a> [resource\_group\_NET\_bizops](#input\_resource\_group\_NET\_bizops) | n/a | `string` | `""` | no |
+| <a name="input_resource_group_NET_hub"></a> [resource\_group\_NET\_hub](#input\_resource\_group\_NET\_hub) | The Resource Group name to be deployed | `string` | `""` | no |
+| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The Resource Group name to be deployed | `string` | `""` | no |
+| <a name="input_root_folder"></a> [root\_folder](#input\_root\_folder) | The folder where locate ADF artifacts | `string` | `""` | no |
+| <a name="input_service"></a> [service](#input\_service) | The name of Subscription | `string` | `""` | no |
+| <a name="input_service_network"></a> [service\_network](#input\_service\_network) | n/a | `string` | `""` | no |
+| <a name="input_service_network_without_dash"></a> [service\_network\_without\_dash](#input\_service\_network\_without\_dash) | n/a | `string` | `""` | no |
+| <a name="input_service_no_network"></a> [service\_no\_network](#input\_service\_no\_network) | n/a | `string` | `""` | no |
+| <a name="input_service_no_network_without_dash"></a> [service\_no\_network\_without\_dash](#input\_service\_no\_network\_without\_dash) | n/a | `string` | `""` | no |
+| <a name="input_sponsor"></a> [sponsor](#input\_sponsor) | The name of Sponsor | `string` | `""` | no |
+| <a name="input_subnet_bizops"></a> [subnet\_bizops](#input\_subnet\_bizops) | n/a | `string` | `""` | no |
+| <a name="input_subnet_hub"></a> [subnet\_hub](#input\_subnet\_hub) | n/a | `string` | `""` | no |
+| <a name="input_subscription_hub_id"></a> [subscription\_hub\_id](#input\_subscription\_hub\_id) | The Subscription to be deployed | `string` | `""` | no |
+| <a name="input_subscription_sponsor_id"></a> [subscription\_sponsor\_id](#input\_subscription\_sponsor\_id) | The Subscription to be deployed | `string` | `""` | no |
+| <a name="input_tag_business_criticality"></a> [tag\_business\_criticality](#input\_tag\_business\_criticality) | n/a | `string` | `"Low"` | no |
+| <a name="input_tag_business_unit"></a> [tag\_business\_unit](#input\_tag\_business\_unit) | n/a | `string` | `"IT Operations"` | no |
+| <a name="input_tag_cost_center"></a> [tag\_cost\_center](#input\_tag\_cost\_center) | n/a | `string` | `"IT-Ops"` | no |
+| <a name="input_tag_data_class"></a> [tag\_data\_class](#input\_tag\_data\_class) | n/a | `string` | `"General"` | no |
+| <a name="input_tag_ops_team"></a> [tag\_ops\_team](#input\_tag\_ops\_team) | n/a | `string` | `"Cloud Operations"` | no |
+| <a name="input_tag_owner"></a> [tag\_owner](#input\_tag\_owner) | n/a | `string` | `"it-ops@rhoworld.com"` | no |
+| <a name="input_virtual_network"></a> [virtual\_network](#input\_virtual\_network) | n/a | `string` | `""` | no |
+| <a name="input_virtual_network_bizops"></a> [virtual\_network\_bizops](#input\_virtual\_network\_bizops) | n/a | `string` | `""` | no |
+| <a name="input_virtual_network_hub"></a> [virtual\_network\_hub](#input\_virtual\_network\_hub) | n/a | `string` | `""` | no |
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_network_security_groups"></a> [network\_security\_groups](#output\_network\_security\_groups) | List of network security groups created for each of the subnets |
-| <a name="output_resource_group_net"></a> [resource\_group\_net](#output\_resource\_group\_net) | Resource group where the networking resources were created |
-| <a name="output_resource_group_ssvc"></a> [resource\_group\_ssvc](#output\_resource\_group\_ssvc) | Shared services resource group where the logging and diagnostics resources were created |
-| <a name="output_route_table"></a> [route\_table](#output\_route\_table) | Route table that was created along with it's respective routes |
-| <a name="output_subnets"></a> [subnets](#output\_subnets) | List of all subnets that were created |
-| <a name="output_subscription_app_id"></a> [subscription\_app\_id](#output\_subscription\_app\_id) | Subscription where the resources were created |
-| <a name="output_subscription_hub_id"></a> [subscription\_hub\_id](#output\_subscription\_hub\_id) | Subscription ID used for the hub resources |
-| <a name="output_tags"></a> [tags](#output\_tags) | All tags that were applied |
-| <a name="output_virtual_networks"></a> [virtual\_networks](#output\_virtual\_networks) | Virtual Networks that were created |
-| <a name="output_vnet_hub"></a> [vnet\_hub](#output\_vnet\_hub) | Hub Virtual Network |
-| <a name="output_vnet_peerings"></a> [vnet\_peerings](#output\_vnet\_peerings) | Virtual Network Peerings |
+No outputs.
 <!-- END_TF_DOCS -->
